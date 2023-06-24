@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ubaya_kuliner_navigation"
+    app:startDestination="@id/welcomeFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.cekepek.ubayakuliner.view.MainActivity"
+        android:label="MainActivity"
+        tools:layout="@layout/activity_main"/>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.cekepek.ubayakuliner.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_listKulinerFragment"
+            app:destination="@id/listKulinerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.cekepek.ubayakuliner.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.cekepek.ubayakuliner.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.cekepek.ubayakuliner.view.ChangePasswordFragment"
+        android:label="ChangePasswordFragment"
+        tools:layout="@layout/fragment_change_password">
+        <action
+            android:id="@+id/action_changePasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listKulinerFragment"
+        android:name="com.cekepek.ubayakuliner.view.ListKulinerFragment"
+        android:label="ListKulinerFragment"
+        tools:layout="@layout/fragment_list_kuliner">
+        <action
+            android:id="@+id/action_listKulinerFragment_to_detailListKulinerFragment"
+            app:destination="@id/detailListKulinerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailListKulinerFragment"
+        android:name="com.cekepek.ubayakuliner.view.DetailListKulinerFragment"
+        android:label="DetailListKulinerFragment"
+        tools:layout="@layout/fragment_detail_list_kuliner">
+        <action
+            android:id="@+id/action_detailListKulinerFragment_to_transaksiKulinerFragment"
+            app:destination="@id/transaksiKulinerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transaksiKulinerFragment"
+        android:name="com.cekepek.ubayakuliner.view.TransaksiKulinerFragment"
+        android:label="fragment_transaksi_kuliner"
+        tools:layout="@layout/fragment_transaksi_kuliner" >
+        <action
+            android:id="@+id/action_transaksiKulinerFragment_to_listKulinerFragment"
+            app:destination="@id/listKulinerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialFragment"
+        android:name="com.cekepek.ubayakuliner.view.TutorialFragment"
+        android:label="fragment_tutorial"
+        tools:layout="@layout/fragment_tutorial" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.cekepek.ubayakuliner.view.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
+</navigation>

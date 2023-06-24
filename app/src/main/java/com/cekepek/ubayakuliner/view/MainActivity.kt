@@ -1,7 +1,8 @@
-package com.cekepek.ubayakuliner
+package com.cekepek.ubayakuliner.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.cekepek.ubayakuliner.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
