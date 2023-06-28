@@ -10,6 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <RatingBar
+            android:id="@+id/ratingKulinerDetail"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toEndOf="@+id/textView16"
+            app:layout_constraintTop_toBottomOf="@+id/txtLokasiUser" />
+
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
@@ -30,10 +40,10 @@
             android:text="Harga:"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTotalDonasi" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNamaMakananKuliner" />
 
         <TextView
-            android:id="@+id/txtTotalDonasi"
+            android:id="@+id/txtNamaMakananKuliner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -44,7 +54,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
-            android:id="@+id/txtHarga"
+            android:id="@+id/txtHargaMakanan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -63,7 +73,18 @@
             android:text="Lokasi"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtHarga" />
+            app:layout_constraintTop_toBottomOf="@+id/txtHargaMakanan" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:text="Rating:"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLokasiUser" />
 
         <TextView
             android:id="@+id/txtLokasiUser"
@@ -80,7 +101,7 @@
             android:id="@+id/btnBeli"
             android:layout_width="0dp"
             android:layout_height="53dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="224dp"
             android:text="Beli"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,5 +117,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/btnCheckReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:text="Check Review"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        <Button
+            android:id="@+id/btnReservasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:text="Reservasi"
+            app:layout_constraintStart_toEndOf="@+id/btnCheckReview"
+            app:layout_constraintTop_toBottomOf="@+id/ratingKulinerDetail" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

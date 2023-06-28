@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import com.cekepek.ubayakuliner.R
 
 
-class TutorialFragment : Fragment() {
+
+class ReservasiFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -16,7 +17,7 @@ class TutorialFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial, container, false)
+        return inflater.inflate(R.layout.fragment_reservasi, container, false)
     }
 
 
