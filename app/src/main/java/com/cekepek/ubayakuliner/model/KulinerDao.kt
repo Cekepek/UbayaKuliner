@@ -12,4 +12,7 @@ interface KulinerDao {
 
     @Query("SELECT * FROM accounts WHERE username=:username AND password=:pass")
     fun login(username:String, pass:String): List<Account>
+
+    @Query("SELECT * FROM accounts WHERE username=:username")
+    fun cekAcc(username: String): List<Account>
 }

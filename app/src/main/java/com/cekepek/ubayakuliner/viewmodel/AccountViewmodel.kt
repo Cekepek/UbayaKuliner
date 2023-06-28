@@ -23,10 +23,23 @@ class AccountViewmodel(application: Application): AndroidViewModel(application),
 
     fun fetch(username: String, pass: String){
         launch {
-            Log.e("cekdb", username+" "+pass)
             val db = buildDb(getApplication())
             accountLD.postValue(db.KulinerDao().login(username, pass))
 
+        }
+    }
+
+    fun register(account: Account){
+        launch {
+            val db = buildDb(getApplication())
+            db.KulinerDao().insertAll(account)
+        }
+    }
+
+    fun cekAcc(username: String){
+        launch {
+            val db = buildDb(getApplication())
+            accountLD.postValue(db.KulinerDao().cekAcc(username))
         }
     }
 }

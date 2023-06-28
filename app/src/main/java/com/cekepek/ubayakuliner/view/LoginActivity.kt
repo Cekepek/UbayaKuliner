@@ -1,12 +1,12 @@
 package com.cekepek.ubayakuliner.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.cekepek.ubayakuliner.R
@@ -28,6 +28,11 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener{
             viewModel.fetch(username.text.toString(), password.text.toString())
             observeViewModel()
+        }
+        val btnSignUp = findViewById<Button>(R.id.btnSignUp)
+        btnSignUp.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 
