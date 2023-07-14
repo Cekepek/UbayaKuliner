@@ -15,4 +15,7 @@ interface KulinerDao {
 
     @Query("SELECT * FROM accounts WHERE username=:username")
     fun cekAcc(username: String): List<Account>
+
+    @Query("SELECT * FROM kuliners")
+    fun getData(): List<Kuliner>
 }

@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cekepek.ubayakuliner.R
+import com.cekepek.ubayakuliner.model.Kuliner
+import com.cekepek.ubayakuliner.util.loadImage
 
-class ListKulinerAdapter (val kulinerList:ArrayList<Kuliner>):RecyclerView.Adapter<ListKulinerAdapter.ListKulinerViewHolder> {
+class ListKulinerAdapter (val kulinerList:ArrayList<Kuliner>):RecyclerView.Adapter<ListKulinerAdapter.ListKulinerViewHolder>() {
 
     class ListKulinerViewHolder (var view:View):RecyclerView.ViewHolder(view)
 
@@ -26,6 +29,10 @@ class ListKulinerAdapter (val kulinerList:ArrayList<Kuliner>):RecyclerView.Adapt
         var imageViewKuliner=holder.view.findViewById<ImageView>(R.id.imageViewKuliner)
         var ratingKuliner=holder.view.findViewById<RatingBar>(R.id.ratingKuliner)
         var textNamaKuliner=holder.view.findViewById<TextView>(R.id.txtNamaKuliner)
+        var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBarItemKuliner)
+        imageViewKuliner.loadImage(kulinerList[position].image, progressBar)
+        ratingKuliner.rating= kulinerList[position].rating
+        textNamaKuliner.text = kulinerList[position].nama
     }
 
     override fun getItemCount(): Int {

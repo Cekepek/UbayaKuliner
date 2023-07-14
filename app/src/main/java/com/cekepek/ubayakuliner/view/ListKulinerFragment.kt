@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -42,12 +43,16 @@ class ListKulinerFragment : Fragment() {
     }
     fun observeViewModel() {
         viewModel.kulinerLD.observe(viewLifecycleOwner, Observer {
-            ListKulinerAdapter.updateListKuliner(it)
+            listKulinerAdapter.updateListKuliner(it)
             var txtErrorListKuliner = view?.findViewById<TextView>(R.id.txtErrorListKuliner)
+            var progressBar = view?.findViewById<ProgressBar>(R.id.progressBarListKuliner)
+
             if(it.isEmpty()) {
                 txtErrorListKuliner?.visibility = View.VISIBLE
+                progressBar?.visibility = View.VISIBLE
             } else {
                 txtErrorListKuliner?.visibility = View.GONE
+                progressBar?.visibility = View.GONE
             }
         })
     }
