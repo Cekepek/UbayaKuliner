@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ubaya_kuliner_navigation"
-    app:startDestination="@id/tutorialFragment">
+    app:startDestination="@id/listKulinerFragment">
     <fragment
-        android:id="@+id/tutorialFragment"
-        android:name="com.cekepek.ubayakuliner.view.TutorialFragment"
-        android:label="fragment_tutorial"
-        tools:layout="@layout/fragment_tutorial" />
+        android:id="@+id/listKulinerFragment"
+        android:name="com.cekepek.ubayakuliner.view.ListKulinerFragment"
+        android:label="ListKulinerFragment" />
 </navigation>
