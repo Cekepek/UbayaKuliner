@@ -20,6 +20,7 @@ val DB_NAME = "kulinerdb"
 fun buildDb(context: Context):KulinerDatabase {
     val db = Room.databaseBuilder(context.applicationContext,
         KulinerDatabase::class.java, DB_NAME)
+        .createFromAsset("kulinerdb.db")
         .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
         .build()
 

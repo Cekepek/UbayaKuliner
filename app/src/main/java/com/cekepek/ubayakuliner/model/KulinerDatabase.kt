@@ -20,8 +20,8 @@ abstract class KulinerDatabase:RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext,
                 KulinerDatabase::class.java, "kulinerdb")
-                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                 .createFromAsset("kulinerdb.db")
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                 .build()
 
         operator fun invoke(context: Context) {
