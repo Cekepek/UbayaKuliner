@@ -42,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
             Log.e("cekdb", it.isEmpty().toString())
             if (it.isEmpty()){
                 Toast.makeText(this, "Username Salah", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             }
             else{
                 Global.login = true
