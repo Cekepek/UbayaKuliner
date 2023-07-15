@@ -97,18 +97,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-        <Button
-            android:id="@+id/btnBeli"
-            android:layout_width="0dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="224dp"
-            android:text="Beli"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtLokasiUser" />
-
         <ImageView
             android:id="@+id/imgViewKuliner"
             android:layout_width="0dp"

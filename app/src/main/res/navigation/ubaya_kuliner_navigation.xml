@@ -7,5 +7,27 @@
     <fragment
         android:id="@+id/listKulinerFragment"
         android:name="com.cekepek.ubayakuliner.view.ListKulinerFragment"
-        android:label="ListKulinerFragment" />
+        android:label="ListKulinerFragment" >
+        <action
+            android:id="@+id/actionTransaksi"
+            app:destination="@id/transaksiKulinerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transaksiKulinerFragment"
+        android:name="com.cekepek.ubayakuliner.view.TransaksiKulinerFragment"
+        android:label="fragment_transaksi_kuliner"
+        tools:layout="@layout/fragment_transaksi_kuliner" >
+        <argument
+            android:name="idMakanan"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_transaksiKulinerFragment_to_detailTransaksiFragment"
+            app:destination="@id/detailTransaksiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTransaksiFragment"
+        android:name="com.cekepek.ubayakuliner.view.DetailTransaksiFragment"
+        android:label="DetailTransaksiFragment" >
+        <argument android:name="idPembelian" />
+    </fragment>
 </navigation>

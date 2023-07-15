@@ -60,7 +60,7 @@ val MIGRATION_3_4 = object:Migration (3,4){
         )
     }
 }
-fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
+fun ImageView.loadImage(url: String?, progressBar: ProgressBar?) {
     Picasso.get()
         .load(url)
         .resize(400, 400)
@@ -68,7 +68,7 @@ fun ImageView.loadImage(url: String?, progressBar: ProgressBar) {
         .error(R.drawable.baseline_error_24)
         .into(this, object: Callback {
             override fun onSuccess() {
-                progressBar.visibility= View.GONE
+                progressBar?.visibility= View.GONE
             }
 
             override fun onError(e: Exception?) {

@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             else{
-                Global.login = true
+                Global.username = it[0].username
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             }

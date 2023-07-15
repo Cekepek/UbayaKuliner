@@ -5,10 +5,12 @@ import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.cekepek.ubayakuliner.R
 import com.cekepek.ubayakuliner.model.Kuliner
@@ -33,6 +35,11 @@ class ListKulinerAdapter (val kulinerList:ArrayList<Kuliner>):RecyclerView.Adapt
         imageViewKuliner.loadImage(kulinerList[position].image, progressBar)
         ratingKuliner.rating= kulinerList[position].rating
         textNamaKuliner.text = kulinerList[position].nama
+        var btnBeli = holder.view.findViewById<Button>(R.id.btnBeli)
+        btnBeli.setOnClickListener {
+            var action = ListKulinerFragmentDirections.actionTransaksi(kulinerList[position].id)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
