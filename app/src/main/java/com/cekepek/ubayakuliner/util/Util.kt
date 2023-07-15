@@ -21,7 +21,7 @@ fun buildDb(context: Context):KulinerDatabase {
     val db = Room.databaseBuilder(context.applicationContext,
         KulinerDatabase::class.java, DB_NAME)
         .createFromAsset("kulinerdb.db")
-        .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+        .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
         .build()
 
     return db
@@ -57,6 +57,14 @@ val MIGRATION_3_4 = object:Migration (3,4){
         )
         database.execSQL(
             "ALTER TABLE kulinersTemp RENAME TO kuliners"
+        )
+    }
+}
+
+val MIGRATION_4_5 = object:Migration (4,5){
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "CREATE TABLE IF NOT EXISTS transaksis (`id` TEXT NOT NULL, `idMakanan` INTEGER NOT NULL, `pembeli` TEXT NOT NULL, `total` INTEGER NOT NULL, `quantity` INTEGER NOT NULL, 'location' TEXT NOT NULL,PRIMARY KEY(`id`))"
         )
     }
 }

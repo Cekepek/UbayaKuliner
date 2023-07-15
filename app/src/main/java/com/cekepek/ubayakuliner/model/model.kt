@@ -37,3 +37,19 @@ data class Kuliner(
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0
 }
+
+@Entity(tableName = "transaksis")
+data class Transaksi(
+    @PrimaryKey
+    var id:String,
+    @ColumnInfo(name= "idMakanan")
+    var idMakanan:Int,
+    @ColumnInfo(name="pembeli")
+    var pembeli:String,
+    @ColumnInfo(name="total")
+    var total:Int,
+    @ColumnInfo(name= "quantity")
+    var quantity:Int,
+    @ColumnInfo(name="location")
+    var location:String,
+)

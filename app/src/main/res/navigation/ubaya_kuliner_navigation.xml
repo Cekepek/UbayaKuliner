@@ -21,7 +21,7 @@
             android:name="idMakanan"
             app:argType="integer" />
         <action
-            android:id="@+id/action_transaksiKulinerFragment_to_detailTransaksiFragment"
+            android:id="@+id/actionDetailTransaksi"
             app:destination="@id/detailTransaksiFragment" />
     </fragment>
     <fragment

@@ -27,4 +27,7 @@ interface KulinerDao {
 
     @Query("UPDATE accounts SET balance=:balance WHERE username=:username")
     fun updateBalance(balance: Int, username: String)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertTransaksi(vararg transaksi: Transaksi)
 }

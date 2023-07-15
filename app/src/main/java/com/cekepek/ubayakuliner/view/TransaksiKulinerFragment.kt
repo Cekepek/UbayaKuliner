@@ -14,11 +14,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.cekepek.ubayakuliner.R
+import com.cekepek.ubayakuliner.model.Transaksi
 import com.cekepek.ubayakuliner.util.Global
 import com.cekepek.ubayakuliner.util.loadImage
 import com.cekepek.ubayakuliner.viewmodel.TransaksiViewModel
 import java.lang.Integer.parseInt
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class TransaksiKulinerFragment : Fragment() {
@@ -43,7 +47,7 @@ class TransaksiKulinerFragment : Fragment() {
         observeViewModel()
         var btnBayar = view.findViewById<Button>(R.id.btnBayar)
         btnBayar.setOnClickListener {
-            observeTransaksiViewModel()
+            observeTransaksiViewModel(view)
         }
     }
 
@@ -88,9 +92,11 @@ class TransaksiKulinerFragment : Fragment() {
             txtTujuan?.text = it.location
         })
     }
-    fun observeTransaksiViewModel(){
+    fun observeTransaksiViewModel(v:View){
         viewModel.userLD.observe(viewLifecycleOwner, Observer {
             var balance = it.balance
+            val txtJumlah = view?.findViewById<TextView>(R.id.txtJumlahMakanan)
+            var txtTujuan = view?.findViewById<TextView>(R.id.txtTujuan)
             var txtTotal = view?.findViewById<TextView>(R.id.txtTotalTransaksi)
             var harga = parseInt(txtTotal?.text.toString())
             if(balance<harga){
@@ -98,7 +104,14 @@ class TransaksiKulinerFragment : Fragment() {
             }
             else{
                 viewModel.updateBalance(balance-harga)
-
+                val formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm")
+                val id = LocalDateTime.now().format(formatter)
+                val idMakanan = TransaksiKulinerFragmentArgs.fromBundle(requireArguments()).idMakanan
+                val jumlah =  parseInt(txtJumlah?.text.toString())
+                val transaksi = Transaksi(id,idMakanan,Global.username, harga, jumlah, txtTujuan?.text.toString())
+                viewModel.addTransaksi(transaksi)
+                val action = TransaksiKulinerFragmentDirections.actionDetailTransaksi(id)
+                Navigation.findNavController(v).navigate(action)
             }
         })
     }

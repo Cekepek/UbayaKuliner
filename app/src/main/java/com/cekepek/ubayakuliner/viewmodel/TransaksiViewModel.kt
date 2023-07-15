@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.cekepek.ubayakuliner.model.Account
 import com.cekepek.ubayakuliner.model.Kuliner
+import com.cekepek.ubayakuliner.model.Transaksi
 import com.cekepek.ubayakuliner.util.Global
 import com.cekepek.ubayakuliner.util.buildDb
 import kotlinx.coroutines.CoroutineScope
@@ -41,6 +42,13 @@ class TransaksiViewModel(application: Application): AndroidViewModel(application
         launch {
             val db = buildDb(getApplication())
             db.KulinerDao().updateBalance(balance, Global.username)
+        }
+    }
+
+    fun addTransaksi(transaksi: Transaksi){
+        launch {
+            val db = buildDb(getApplication())
+            db.KulinerDao().insertTransaksi(transaksi)
         }
     }
 }
