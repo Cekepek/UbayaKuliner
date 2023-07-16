@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        Global.username = ""
         viewModel = ViewModelProvider(this).get(AccountViewmodel::class.java)
         val username = findViewById<TextView>(R.id.txtUsername)
         val password = findViewById<TextView>(R.id.txtPassword)

@@ -18,6 +18,7 @@ import androidx.navigation.Navigation
 import com.cekepek.ubayakuliner.R
 import com.cekepek.ubayakuliner.model.Transaksi
 import com.cekepek.ubayakuliner.util.Global
+import com.cekepek.ubayakuliner.util.NotificationHelper
 import com.cekepek.ubayakuliner.util.loadImage
 import com.cekepek.ubayakuliner.viewmodel.TransaksiViewModel
 import java.lang.Integer.parseInt
@@ -110,6 +111,7 @@ class TransaksiKulinerFragment : Fragment() {
                 val jumlah =  parseInt(txtJumlah?.text.toString())
                 val transaksi = Transaksi(id,idMakanan,Global.username, harga, jumlah, txtTujuan?.text.toString())
                 viewModel.addTransaksi(transaksi)
+                NotificationHelper(v.context).createNotification("Transaksi Berhasil", "Makanan anda segera dikirim!")
                 val action = TransaksiKulinerFragmentDirections.actionDetailTransaksi(id)
                 Navigation.findNavController(v).navigate(action)
             }
