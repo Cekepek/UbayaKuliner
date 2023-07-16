@@ -14,7 +14,8 @@ import kotlin.coroutines.CoroutineContext
 
 class AccountViewmodel(application: Application): AndroidViewModel(application), CoroutineScope {
 
-    val accountLD = MutableLiveData<List<Account>>()
+    val accountLD = MutableLiveData<Account>()
+    val cekAccountLD = MutableLiveData<List<Account>>()
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
@@ -39,7 +40,7 @@ class AccountViewmodel(application: Application): AndroidViewModel(application),
     fun cekAcc(username: String){
         launch {
             val db = buildDb(getApplication())
-            accountLD.postValue(db.KulinerDao().cekAcc(username))
+            cekAccountLD.postValue(db.KulinerDao().cekAcc(username))
         }
     }
 }

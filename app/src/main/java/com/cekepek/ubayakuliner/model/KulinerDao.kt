@@ -11,7 +11,7 @@ interface KulinerDao {
     fun insertAll(vararg account:Account)
 
     @Query("SELECT * FROM accounts WHERE username=:username AND password=:pass")
-    fun login(username:String, pass:String): List<Account>
+    fun login(username:String, pass:String): Account
 
     @Query("SELECT * FROM accounts WHERE username=:username")
     fun cekAcc(username: String): List<Account>
