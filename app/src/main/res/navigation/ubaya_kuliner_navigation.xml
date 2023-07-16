@@ -29,5 +29,8 @@
         android:name="com.cekepek.ubayakuliner.view.DetailTransaksiFragment"
         android:label="DetailTransaksiFragment" >
         <argument android:name="idPembelian" />
+        <action
+            android:id="@+id/actionKembali"
+            app:destination="@id/listKulinerFragment" />
     </fragment>
 </navigation>

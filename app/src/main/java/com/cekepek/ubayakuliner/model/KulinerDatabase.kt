@@ -4,13 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.cekepek.ubayakuliner.util.MIGRATION_1_2
-import com.cekepek.ubayakuliner.util.MIGRATION_2_3
-import com.cekepek.ubayakuliner.util.MIGRATION_3_4
-import com.cekepek.ubayakuliner.util.MIGRATION_4_5
+import com.cekepek.ubayakuliner.util.*
 
 
-@Database(entities = arrayOf(Account::class, Kuliner::class, Transaksi::class), version =  5)
+@Database(entities = arrayOf(Account::class, Kuliner::class, Transaksi::class), version =  7)
 abstract class KulinerDatabase:RoomDatabase() {
     abstract fun KulinerDao(): KulinerDao
 
@@ -22,7 +19,8 @@ abstract class KulinerDatabase:RoomDatabase() {
             Room.databaseBuilder(context.applicationContext,
                 KulinerDatabase::class.java, "kulinerdb")
                 .createFromAsset("kulinerdb.db")
-                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6,
+                    MIGRATION_6_7)
                 .build()
 
         operator fun invoke(context: Context) {

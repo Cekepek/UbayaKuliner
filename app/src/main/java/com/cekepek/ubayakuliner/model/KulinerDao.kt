@@ -30,4 +30,7 @@ interface KulinerDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTransaksi(vararg transaksi: Transaksi)
+
+    @Query("SELECT * FROM transaksis WHERE id=:id")
+    fun getTransaksi(id: String): Transaksi
 }

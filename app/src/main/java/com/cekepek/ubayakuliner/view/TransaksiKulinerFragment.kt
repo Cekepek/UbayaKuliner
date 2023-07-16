@@ -3,6 +3,7 @@ package com.cekepek.ubayakuliner.view
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,10 +13,13 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.cekepek.ubayakuliner.R
+import com.cekepek.ubayakuliner.databinding.FragmentDetailTransaksiBinding
+import com.cekepek.ubayakuliner.databinding.FragmentTransaksiKulinerBinding
 import com.cekepek.ubayakuliner.model.Transaksi
 import com.cekepek.ubayakuliner.util.Global
 import com.cekepek.ubayakuliner.util.NotificationHelper
@@ -26,95 +30,56 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 
-class TransaksiKulinerFragment : Fragment() {
+class TransaksiKulinerFragment : Fragment(), FragmentTransaksiLayoutInterface{
 
     private lateinit var viewModel:TransaksiViewModel
+    private lateinit var dataBinding:FragmentTransaksiKulinerBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_transaksi_kuliner, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentTransaksiKulinerBinding>(inflater,R.layout.fragment_transaksi_kuliner, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        dataBinding.transaksi = Transaksi("","",Global.username,10,1,"")
+        dataBinding.buttonListener = this
         val id = TransaksiKulinerFragmentArgs.fromBundle(requireArguments()).idMakanan
         viewModel= ViewModelProvider(this).get(TransaksiViewModel::class.java)
         viewModel.fetch(id)
         viewModel.getAccount(Global.username)
         observeViewModel()
-        var btnBayar = view.findViewById<Button>(R.id.btnBayar)
-        btnBayar.setOnClickListener {
-            observeTransaksiViewModel(view)
-        }
     }
 
     fun observeViewModel(){
         viewModel.kulinerLD.observe(viewLifecycleOwner, Observer {
-            var imgKuliner = view?.findViewById<ImageView>(R.id.imgViewKuliner)
-            var progressBar = view?.findViewById<ProgressBar>(R.id.progressBarTransaksi)
-            imgKuliner?.loadImage(it.image,progressBar)
-            val txtTotal = view?.findViewById<TextView>(R.id.txtTotalTransaksi)
-            val txtJumlah = view?.findViewById<TextView>(R.id.txtJumlahMakanan)
-            var harga = parseInt(txtJumlah?.text.toString()) * it.harga
-            txtTotal?.text = harga.toString()
-            txtJumlah?.addTextChangedListener(object : TextWatcher{
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    if(s.toString() == ""){
-                        harga = 0
-                    }
-                    else{
-                        harga = parseInt(s.toString()) * it.harga
-                        txtTotal?.text = harga.toString()
-                    }
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                }
-
-            })
-            var txtNama = view?.findViewById<TextView>(R.id.txtNamaMakanan)
-            txtNama?.setText(it.nama)
+            dataBinding.kuliner = it
         })
 
         viewModel.userLD.observe(viewLifecycleOwner, Observer {
-            var txtTujuan = view?.findViewById<TextView>(R.id.txtTujuan)
-            txtTujuan?.text = it.location
+            dataBinding.user = it
         })
     }
-    fun observeTransaksiViewModel(v:View){
-        viewModel.userLD.observe(viewLifecycleOwner, Observer {
-            var balance = it.balance
-            val txtJumlah = view?.findViewById<TextView>(R.id.txtJumlahMakanan)
-            var txtTujuan = view?.findViewById<TextView>(R.id.txtTujuan)
-            var txtTotal = view?.findViewById<TextView>(R.id.txtTotalTransaksi)
-            var harga = parseInt(txtTotal?.text.toString())
-            if(balance<harga){
-                Toast.makeText(activity, "Saldo anda Tidak Cukup ", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                viewModel.updateBalance(balance-harga)
-                val formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm")
-                val id = LocalDateTime.now().format(formatter)
-                val idMakanan = TransaksiKulinerFragmentArgs.fromBundle(requireArguments()).idMakanan
-                val jumlah =  parseInt(txtJumlah?.text.toString())
-                val transaksi = Transaksi(id,idMakanan,Global.username, harga, jumlah, txtTujuan?.text.toString())
-                viewModel.addTransaksi(transaksi)
-                NotificationHelper(v.context).createNotification("Transaksi Berhasil", "Makanan anda segera dikirim!")
-                val action = TransaksiKulinerFragmentDirections.actionDetailTransaksi(id)
-                Navigation.findNavController(v).navigate(action)
-            }
-        })
+
+    override fun onButtonBayar(v: View) {
+        val harga = dataBinding.transaksi!!.quantity*dataBinding.kuliner!!.harga
+        if(dataBinding.user!!.balance<harga){
+            Toast.makeText(activity, "Saldo anda Tidak Cukup ", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            dataBinding.transaksi!!.namaMakanan = dataBinding.kuliner!!.nama
+            dataBinding.transaksi!!.total = harga
+            viewModel.updateBalance(dataBinding.user!!.balance-harga)
+            val formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm")
+            dataBinding.transaksi!!.id = LocalDateTime.now().format(formatter)
+            viewModel.addTransaksi(dataBinding.transaksi!!)
+            val action = TransaksiKulinerFragmentDirections.actionDetailTransaksi(dataBinding.transaksi!!.id)
+            Navigation.findNavController(v).navigate(action)
+        }
     }
 }

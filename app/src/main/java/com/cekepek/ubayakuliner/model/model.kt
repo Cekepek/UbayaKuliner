@@ -24,7 +24,7 @@ data class Kuliner(
     @ColumnInfo(name = "nama")
     var nama:String,
     @ColumnInfo(name = "image")
-    var image:String,
+    var image:String?,
     @ColumnInfo(name = "harga")
     var harga:Int,
     @ColumnInfo(name = "namaResto")
@@ -42,8 +42,8 @@ data class Kuliner(
 data class Transaksi(
     @PrimaryKey
     var id:String,
-    @ColumnInfo(name= "idMakanan")
-    var idMakanan:Int,
+    @ColumnInfo(name= "namaMakanan")
+    var namaMakanan:String,
     @ColumnInfo(name="pembeli")
     var pembeli:String,
     @ColumnInfo(name="total")
