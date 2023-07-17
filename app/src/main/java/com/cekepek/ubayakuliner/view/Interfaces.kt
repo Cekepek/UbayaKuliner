@@ -19,8 +19,15 @@ interface ActivityRegisterLayoutInterface{
 interface ActivityLoginLayoutInterface{
     fun onButtonSignUp(v: View)
     fun onButtonLogin(v: View)
+    fun onButtonForget(v: View)
 }
 
 interface RiwayatTransaksiLayoutInterface{
     fun onButtonDetail(v: View)
+}
+interface ActivityUsernameCheckLayoutInterface{
+    fun onButtonCheck(v: View)
+}
+interface  ActivityChangePasswordLayoutInterface{
+    fun onButtonChangePwd(v: View)
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.cekepek.ubayakuliner.model.Account
+import com.cekepek.ubayakuliner.util.Global
 import com.cekepek.ubayakuliner.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -43,4 +44,17 @@ class AccountViewmodel(application: Application): AndroidViewModel(application),
             cekAccountLD.postValue(db.KulinerDao().cekAcc(username))
         }
     }
+    fun cekPwd(password: String){
+        launch {
+            val db = buildDb(getApplication())
+            cekAccountLD.postValue(db.KulinerDao().cekPwd(password))
+        }
+    }
+    fun updatePass(password: String, username: String){
+        launch {
+            val db = buildDb(getApplication())
+            db.KulinerDao().updatePass(password, username)
+        }
+    }
+
 }

@@ -55,5 +55,10 @@ class LoginActivity : AppCompatActivity(), ActivityLoginLayoutInterface {
         viewModel.fetch(dataBinding.user!!.username, dataBinding.user!!.password)
         observeViewModel()
     }
+
+    override fun onButtonForget(v: View) {
+        val intent = Intent(this, UsernameCheckActivity::class.java)
+        startActivity(intent)
+    }
 }
 

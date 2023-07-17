@@ -35,7 +35,7 @@ class ReviewFragment : Fragment() {
 
         val id = ReviewFragmentArgs.fromBundle(requireArguments()).idMakanan
         viewModel= ViewModelProvider(this).get(ReviewViewmodel::class.java)
-        viewModel.getReviews(id)
+//        viewModel.getReviews(id)
         observeViewModel()
 
     }

@@ -19,11 +19,19 @@ interface KulinerDao {
     @Query("SELECT * FROM kuliners")
     fun getData(): List<Kuliner>
 
+    @Query("UPDATE accounts SET password=:password WHERE username=:username")
+    fun updatePass(password: String, username: String)
+
+    @Query("SELECT * FROM accounts WHERE password=:password")
+    fun cekPwd(password: String): List<Account>
+
+
     @Query("SELECT * FROM kuliners WHERE id=:id")
     fun getDetail(id: Int): Kuliner
 
     @Query("SELECT * FROM accounts WHERE username=:username")
     fun getAcc(username: String): Account
+
 
     @Query("UPDATE accounts SET balance=:balance WHERE username=:username")
     fun updateBalance(balance: Int, username: String)
