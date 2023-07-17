@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_listKulinerFragment_to_riwayatTransaksiFragment"
             app:destination="@id/itemRiwayat" />
+        <action
+            android:id="@+id/action_itemListKuliner_to_detailListKulinerFragment"
+            app:destination="@id/detailListKulinerFragment" />
     </fragment>
     <fragment
         android:id="@+id/transaksiKulinerFragment"
@@ -43,5 +46,25 @@
         <action
             android:id="@+id/actionDetailRiwayatTransaksi"
             app:destination="@id/detailTransaksiFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailListKulinerFragment"
+        android:name="com.cekepek.ubayakuliner.view.DetailListKulinerFragment"
+        android:label="DetailListKulinerFragment" >
+        <argument
+            android:name="idMakanan"
+            app:argType="integer" />
+        <action
+            android:id="@+id/actionReview"
+            app:destination="@id/reviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.cekepek.ubayakuliner.view.ReviewFragment"
+        android:label="fragment_review"
+        tools:layout="@layout/fragment_review" >
+        <argument
+            android:name="idMakanan"
+            app:argType="integer" />
     </fragment>
 </navigation>
