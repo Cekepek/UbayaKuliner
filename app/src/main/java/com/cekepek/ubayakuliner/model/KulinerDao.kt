@@ -33,4 +33,7 @@ interface KulinerDao {
 
     @Query("SELECT * FROM transaksis WHERE id=:id")
     fun getTransaksi(id: String): Transaksi
+
+    @Query("SELECT * FROM transaksis WHERE pembeli=:username")
+    fun getRiwayatTransaksi(username: String): List<Transaksi>
 }

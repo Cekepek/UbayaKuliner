@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ubaya_kuliner_navigation"
-    app:startDestination="@id/listKulinerFragment">
+    app:startDestination="@id/itemListKuliner">
     <fragment
-        android:id="@+id/listKulinerFragment"
+        android:id="@+id/itemListKuliner"
         android:name="com.cekepek.ubayakuliner.view.ListKulinerFragment"
         android:label="ListKulinerFragment" >
         <action
             android:id="@+id/actionTransaksi"
             app:destination="@id/transaksiKulinerFragment" />
+        <action
+            android:id="@+id/action_listKulinerFragment_to_riwayatTransaksiFragment"
+            app:destination="@id/itemRiwayat" />
     </fragment>
     <fragment
         android:id="@+id/transaksiKulinerFragment"
@@ -31,6 +34,14 @@
         <argument android:name="idPembelian" />
         <action
             android:id="@+id/actionKembali"
-            app:destination="@id/listKulinerFragment" />
+            app:destination="@id/itemListKuliner" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemRiwayat"
+        android:name="com.cekepek.ubayakuliner.view.RiwayatTransaksiFragment"
+        android:label="RiwayatTransaksiFragment" >
+        <action
+            android:id="@+id/actionDetailRiwayatTransaksi"
+            app:destination="@id/detailTransaksiFragment" />
     </fragment>
 </navigation>

@@ -20,3 +20,7 @@ interface ActivityLoginLayoutInterface{
     fun onButtonSignUp(v: View)
     fun onButtonLogin(v: View)
 }
+
+interface RiwayatTransaksiLayoutInterface{
+    fun onButtonDetail(v: View)
+}

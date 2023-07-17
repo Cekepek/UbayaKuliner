@@ -7,8 +7,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.cekepek.ubayakuliner.R
 import com.cekepek.ubayakuliner.util.Global
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,15 +20,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        navController =
+            (supportFragmentManager.findFragmentById(R.id.fragmentView) as
+                    NavHostFragment).navController
+        NavigationUI.setupActionBarWithNavController(this, navController)
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottomNav.setupWithNavController(navController)
         if(Global.username == ""){
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-//        navController =
-//            (supportFragmentManager.findFragmentById(R.id.tutorialFragment) as
-//                    NavHostFragment).navController
-//        NavigationUI.setupActionBarWithNavController(this, navController)
+
     }
 
-
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp()
+    }
 }

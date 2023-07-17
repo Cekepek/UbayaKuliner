@@ -7,8 +7,8 @@
         android:title="ListKuliner"
         app:showAsAction="always" />
     <item
-        android:id="@+id/itemTutorial"
-        android:icon="@drawable/ic_baseline_info_24"
-        android:title="Tutorial"
+        android:id="@+id/itemRiwayat"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="Riwayat Transaksi"
         app:showAsAction="always" />
 </menu>

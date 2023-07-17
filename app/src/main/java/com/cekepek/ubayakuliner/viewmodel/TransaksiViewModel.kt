@@ -19,6 +19,7 @@ class TransaksiViewModel(application: Application): AndroidViewModel(application
     val kulinerLD = MutableLiveData<Kuliner>()
     val userLD = MutableLiveData<Account>()
     val transaksiLD = MutableLiveData<Transaksi>()
+    val riwayatLD = MutableLiveData<List<Transaksi>>()
 
     private var job = Job()
 
@@ -57,6 +58,13 @@ class TransaksiViewModel(application: Application): AndroidViewModel(application
         launch {
             val db = buildDb(getApplication())
             transaksiLD.postValue(db.KulinerDao().getTransaksi(id))
+        }
+    }
+
+    fun getRiwayatTransaksi(username: String){
+        launch {
+            val db = buildDb(getApplication())
+            riwayatLD.postValue(db.KulinerDao().getRiwayatTransaksi(username))
         }
     }
 }
