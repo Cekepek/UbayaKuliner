@@ -53,3 +53,16 @@ data class Transaksi(
     @ColumnInfo(name="location")
     var location:String,
 )
+
+@Entity(tableName = "reviews")
+data class Review(
+    @ColumnInfo(name= "username")
+    var username:String,
+    @ColumnInfo(name="idMakanan")
+    var idMakanan:Int,
+    @ColumnInfo(name="komentar")
+    var komentar:String,
+){
+    @PrimaryKey(autoGenerate = true)
+    var id:Int = 0
+}
