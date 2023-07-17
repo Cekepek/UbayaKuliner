@@ -10,6 +10,9 @@ interface FragmentDetailTransaksiLayoutInterface{
 interface FragmentTransaksiLayoutInterface{
     fun onButtonBayar(v: View)
 }
+interface FragmentDetailListKulinerLayoutInterface{
+    fun onCheckReview(v:View)
+}
 
 interface ActivityRegisterLayoutInterface{
     fun onButtonSignIn(v: View)
@@ -31,3 +34,4 @@ interface ActivityUsernameCheckLayoutInterface{
 interface  ActivityChangePasswordLayoutInterface{
     fun onButtonChangePwd(v: View)
 }
+
