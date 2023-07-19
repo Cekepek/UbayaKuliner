@@ -1,6 +1,7 @@
 package com.cekepek.ubayakuliner.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -35,7 +36,6 @@ class DetailListKulinerFragment : Fragment(), FragmentDetailListKulinerLayoutInt
         dataBinding.kuliner
         dataBinding.buttonListener = this
         viewModel=ViewModelProvider(this).get(DetailKulinerViewModel::class.java)
-
         val id = DetailListKulinerFragmentArgs.fromBundle(requireArguments()).idMakanan
         viewModel.fetch(id)
         observeViewModel()
@@ -48,6 +48,7 @@ class DetailListKulinerFragment : Fragment(), FragmentDetailListKulinerLayoutInt
     }
 
     override fun onCheckReview(v: View) {
+        Log.e("tes", dataBinding.kuliner!!.id.toString())
         val action = DetailListKulinerFragmentDirections.actionReview(dataBinding.kuliner!!.id)
         Navigation.findNavController(v).navigate(action)
     }

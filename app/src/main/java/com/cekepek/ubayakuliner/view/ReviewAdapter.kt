@@ -1,5 +1,6 @@
 package com.cekepek.ubayakuliner.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ class ReviewAdapter(val reviews:ArrayList<Review>)
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
+        Log.d("tes", reviews[position].komentar)
         holder.view.review = reviews[position]
     }
 

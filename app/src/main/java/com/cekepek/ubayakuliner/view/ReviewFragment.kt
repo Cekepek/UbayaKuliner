@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cekepek.ubayakuliner.R
 import com.cekepek.ubayakuliner.model.Review
 import com.cekepek.ubayakuliner.viewmodel.ListKulinerViewModel
@@ -37,7 +39,9 @@ class ReviewFragment : Fragment() {
         viewModel= ViewModelProvider(this).get(ReviewViewmodel::class.java)
         viewModel.getReviews(id)
         observeViewModel()
-
+        var recView = view.findViewById<RecyclerView>(R.id.recViewReview)
+        recView.layoutManager = LinearLayoutManager(context)
+        recView.adapter = listReviewAdapter
     }
 
     fun observeViewModel(){
