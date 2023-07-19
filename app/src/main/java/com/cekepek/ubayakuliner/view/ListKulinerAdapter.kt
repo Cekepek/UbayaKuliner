@@ -40,6 +40,11 @@ class ListKulinerAdapter (val kulinerList:ArrayList<Kuliner>):RecyclerView.Adapt
             var action = ListKulinerFragmentDirections.actionTransaksi(kulinerList[position].id)
             Navigation.findNavController(it).navigate(action)
         }
+
+        var btnView=holder.view.findViewById<Button>(R.id.btnView)
+        btnView.setOnClickListener {
+            val action=ListKulinerFragmentDirections.actionItemListKulinerToDetailListKulinerFragment(kulinerList[position].id)
+        }
     }
 
     override fun getItemCount(): Int {

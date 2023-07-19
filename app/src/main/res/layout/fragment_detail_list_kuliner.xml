@@ -128,7 +128,8 @@
                 android:layout_marginTop="20dp"
                 android:onClick="@{buttonListener::onCheckReview}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                app:layout_constraintTop_toBottomOf="@+id/textView16"
+                tools:text="Review" />
 
             <Button
                 android:id="@+id/btnReservasi"
@@ -139,6 +140,16 @@
                 android:text="Reservasi"
                 app:layout_constraintStart_toEndOf="@+id/btnCheckReview"
                 app:layout_constraintTop_toBottomOf="@+id/ratingKulinerDetail" />
+
+            <ProgressBar
+                android:id="@+id/progressBarDetailKuliner"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imgViewKuliner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imgViewKuliner"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
