@@ -46,4 +46,7 @@ interface KulinerDao {
 
     @Query("SELECT * FROM reviews WHERE idMakanan=:id")
     fun getReview(id: Int): List<Review>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addReview(vararg review: Review)
 }

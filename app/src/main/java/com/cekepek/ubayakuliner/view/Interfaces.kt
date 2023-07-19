@@ -39,3 +39,7 @@ interface ListKulinerLayoutInterface{
     fun onButtonViewDetail(v: View)
     fun onButtonBeli(v:View)
 }
+
+interface FragmentAddReviewLayoutInterface{
+    fun onButtonAddReview(v: View)
+}

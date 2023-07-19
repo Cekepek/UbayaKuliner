@@ -125,12 +125,12 @@
                 android:id="@+id/btnCheckReview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:onClick="@{buttonListener::onCheckReview}"
+                android:text="Baca Review"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView16"
-                tools:text="Review" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
 
             <ProgressBar
                 android:id="@+id/progressBarDetailKuliner"
@@ -141,6 +141,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/imgViewKuliner"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{kuliner.description}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

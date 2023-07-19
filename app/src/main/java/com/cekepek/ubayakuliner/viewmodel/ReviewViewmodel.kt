@@ -26,4 +26,11 @@ class ReviewViewmodel(application: Application): AndroidViewModel(application), 
             reviewLD.postValue(db.KulinerDao().getReview(id))
         }
     }
+
+    fun addReview(review: Review){
+        launch {
+            val db = buildDb(getApplication())
+            db.KulinerDao().addReview(review)
+        }
+    }
 }

@@ -66,5 +66,17 @@
         <argument
             android:name="idMakanan"
             app:argType="integer" />
+        <action
+            android:id="@+id/actionAddReview"
+            app:destination="@id/addReviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addReviewFragment"
+        android:name="com.cekepek.ubayakuliner.view.AddReviewFragment"
+        android:label="fragment_add_review"
+        tools:layout="@layout/fragment_add_review" >
+        <argument
+            android:name="idMakanan"
+            app:argType="integer" />
     </fragment>
 </navigation>
