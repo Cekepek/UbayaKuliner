@@ -29,7 +29,7 @@ fun buildDb(context: Context):KulinerDatabase {
         KulinerDatabase::class.java, DB_NAME)
         .createFromAsset("kulinerdb.db")
         .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6,
-            MIGRATION_6_7, MIGRATION_7_8)
+            MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9)
         .build()
 
     return db
@@ -116,6 +116,13 @@ val MIGRATION_7_8 = object:Migration (7,8){
     }
 }
 
+val MIGRATION_8_9 = object:Migration (8,9){
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "INSERT INTO reviews(username, idMakanan, komentar) VALUES('dummy', 0, 'dummy')"
+        )
+    }
+}
 fun ImageView.loadImage(url: String?, progressBar: ProgressBar?) {
     Picasso.get()
         .load(url)

@@ -32,7 +32,6 @@ interface KulinerDao {
     @Query("SELECT * FROM accounts WHERE username=:username")
     fun getAcc(username: String): Account
 
-
     @Query("UPDATE accounts SET balance=:balance WHERE username=:username")
     fun updateBalance(balance: Int, username: String)
 

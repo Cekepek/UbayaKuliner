@@ -8,9 +8,6 @@
             name="kuliner"
             type="com.cekepek.ubayakuliner.model.Kuliner" />
         <variable
-            name="transaksi"
-            type="com.cekepek.ubayakuliner.model.Transaksi" />
-        <variable
             name="buttonListener"
             type="com.cekepek.ubayakuliner.view.FragmentDetailListKulinerLayoutInterface" />
     </data>
@@ -31,8 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="32dp"
+                android:rating="@{kuliner.rating}"
                 app:layout_constraintStart_toEndOf="@+id/textView16"
-                app:layout_constraintTop_toBottomOf="@+id/txtLokasiUser" />
+                app:layout_constraintTop_toBottomOf="@+id/txtRestaurant" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -62,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:text="@={kuliner.nama}"
+                android:text="@{kuliner.nama}"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -73,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:text="@={+String.valueOf(kuliner.harga)}"
+                android:text="@{``+kuliner.harga}"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -84,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
-                android:text="Lokasi"
+                android:text="Restaurant:"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtHargaMakanan" />
@@ -98,15 +96,15 @@
                 android:text="Rating:"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtLokasiUser" />
+                app:layout_constraintTop_toBottomOf="@+id/txtRestaurant" />
 
             <TextView
-                android:id="@+id/txtLokasiUser"
+                android:id="@+id/txtRestaurant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:text="@={transaksi.location}"
+                android:text="@{kuliner.namaResto}"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -115,6 +113,9 @@
                 android:id="@+id/imgViewKuliner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:imageUrl="@{kuliner.image}"
+                android:progressBar="@{progressBarDetailKuliner}"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -130,16 +131,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView16"
                 tools:text="Review" />
-
-            <Button
-                android:id="@+id/btnReservasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="20dp"
-                android:text="Reservasi"
-                app:layout_constraintStart_toEndOf="@+id/btnCheckReview"
-                app:layout_constraintTop_toBottomOf="@+id/ratingKulinerDetail" />
 
             <ProgressBar
                 android:id="@+id/progressBarDetailKuliner"

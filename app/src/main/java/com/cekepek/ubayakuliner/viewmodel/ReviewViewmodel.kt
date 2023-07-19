@@ -20,10 +20,10 @@ class ReviewViewmodel(application: Application): AndroidViewModel(application), 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 
-//    fun getReviews(id:Int){
-//        launch {
-//            val db = buildDb(getApplication())
-//            reviewLD.postValue(db.KulinerDao().getReview(id))
-//        }
-//    }
+    fun getReviews(id:Int){
+        launch {
+            val db = buildDb(getApplication())
+            reviewLD.postValue(db.KulinerDao().getReview(id))
+        }
+    }
 }
