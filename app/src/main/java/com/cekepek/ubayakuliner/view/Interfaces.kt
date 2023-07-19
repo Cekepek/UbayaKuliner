@@ -35,3 +35,7 @@ interface  ActivityChangePasswordLayoutInterface{
     fun onButtonChangePwd(v: View)
 }
 
+interface ListKulinerLayoutInterface{
+    fun onButtonViewDetail(v: View)
+    fun onButtonBeli(v:View)
+}

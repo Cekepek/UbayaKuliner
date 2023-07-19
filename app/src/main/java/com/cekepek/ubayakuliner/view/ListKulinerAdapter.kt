@@ -13,39 +13,26 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.cekepek.ubayakuliner.R
+import com.cekepek.ubayakuliner.databinding.ListKulinerItemBinding
+import com.cekepek.ubayakuliner.databinding.ReviewItemBinding
 import com.cekepek.ubayakuliner.model.Kuliner
 import com.cekepek.ubayakuliner.util.loadImage
+import java.lang.Integer.parseInt
 
-class ListKulinerAdapter (val kulinerList:ArrayList<Kuliner>):RecyclerView.Adapter<ListKulinerAdapter.ListKulinerViewHolder>() {
+class ListKulinerAdapter (val kulinerList:ArrayList<Kuliner>)
+    :RecyclerView.Adapter<ListKulinerAdapter.ListKulinerViewHolder>(), ListKulinerLayoutInterface {
 
-    class ListKulinerViewHolder (var view:View):RecyclerView.ViewHolder(view)
+    class ListKulinerViewHolder (var view:ListKulinerItemBinding):RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListKulinerViewHolder {
-       val inflater=LayoutInflater.from(parent.context) 
-        val view=inflater.inflate(R.layout.list_kuliner_item, parent, false)
-
+        val inflater = LayoutInflater.from(parent.context)
+        val view = ListKulinerItemBinding.inflate(inflater, parent, false)
         return ListKulinerViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListKulinerViewHolder, position: Int) {
-        var imageViewKuliner=holder.view.findViewById<ImageView>(R.id.imageViewKuliner)
-        var ratingKuliner=holder.view.findViewById<RatingBar>(R.id.ratingKuliner)
-        var textNamaKuliner=holder.view.findViewById<TextView>(R.id.txtNamaKuliner)
-        var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBarItemKuliner)
-        imageViewKuliner.loadImage(kulinerList[position].image, progressBar)
-        ratingKuliner.rating= kulinerList[position].rating
-        textNamaKuliner.text = kulinerList[position].nama
-        var btnBeli = holder.view.findViewById<Button>(R.id.btnBeli)
-        btnBeli.setOnClickListener {
-            var action = ListKulinerFragmentDirections.actionTransaksi(kulinerList[position].id)
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        var btnView=holder.view.findViewById<Button>(R.id.btnView)
-        btnView.setOnClickListener {
-            val action=ListKulinerFragmentDirections.actionItemListKulinerToDetailListKulinerFragment(kulinerList[position].id)
-            Navigation.findNavController(it).navigate(action)
-        }
+        holder.view.kuliner = kulinerList[position]
+        holder.view.buttonListener = this
     }
 
     override fun getItemCount(): Int {
@@ -56,6 +43,16 @@ class ListKulinerAdapter (val kulinerList:ArrayList<Kuliner>):RecyclerView.Adapt
         kulinerList.clear()
         kulinerList.addAll(newListKuliner)
         notifyDataSetChanged()
+    }
+
+    override fun onButtonViewDetail(v: View) {
+        val action=ListKulinerFragmentDirections.actionItemListKulinerToDetailListKulinerFragment(v.tag.toString().toInt())
+        Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onButtonBeli(v: View) {
+        var action = ListKulinerFragmentDirections.actionTransaksi(v.tag.toString().toInt())
+        Navigation.findNavController(v).navigate(action)
     }
 
 

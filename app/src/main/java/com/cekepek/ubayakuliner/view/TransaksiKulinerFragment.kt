@@ -73,6 +73,7 @@ class TransaksiKulinerFragment : Fragment(), FragmentTransaksiLayoutInterface{
         }
         else{
             dataBinding.transaksi!!.namaMakanan = dataBinding.kuliner!!.nama
+            dataBinding.transaksi!!.location = dataBinding.user!!.location
             dataBinding.transaksi!!.total = harga
             viewModel.updateBalance(dataBinding.user!!.balance-harga)
             val formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm")

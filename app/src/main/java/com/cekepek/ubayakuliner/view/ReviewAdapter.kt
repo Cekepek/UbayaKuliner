@@ -20,7 +20,6 @@ class ReviewAdapter(val reviews:ArrayList<Review>)
     }
 
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
-        Log.d("tes", reviews[position].komentar)
         holder.view.review = reviews[position]
     }
 
