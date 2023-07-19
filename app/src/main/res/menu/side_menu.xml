@@ -2,13 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/itemListKuliner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/ic_baseline_list_24"
+        android:title="ListKuliner"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/itemRiwayat"
+        android:icon="@drawable/ic_baseline_assignment_24"
+        android:title="History"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/itemAkun"
         android:icon="@drawable/ic_baseline_account_circle_24"
         android:title="Akun"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/itemHistory"
-        android:icon="@drawable/ic_baseline_assignment_24"
-        android:title="History"
         app:showAsAction="always" />
 </menu>

@@ -57,4 +57,17 @@ class AccountViewmodel(application: Application): AndroidViewModel(application),
         }
     }
 
+    fun updateProfile(phone: String, location: String, username: String){
+        launch {
+            val db = buildDb(getApplication())
+            db.KulinerDao().updateProfile(phone, location, username)
+        }
+    }
+    fun getAccount(username: String){
+        launch {
+            val db = buildDb(getApplication())
+            accountLD.postValue(db.KulinerDao().getAcc(username))
+        }
+    }
+
 }

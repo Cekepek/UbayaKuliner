@@ -19,30 +19,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageViewProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" />
-
             <TextView
-                android:id="@+id/txtNamaUser"
+                android:id="@+id/txtNamaUserEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@={user.username}"
+                android:layout_marginTop="75dp"
 
+                android:text="@={user.username}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtNoTelpUser"
@@ -67,7 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/email" />
 
             <TextView
-                android:id="@+id/txtSaldoWallet"
+                android:id="@+id/txtSaldoWalletEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@={``+user.balance}"
@@ -81,13 +70,13 @@
                 android:id="@+id/txtNoTelp2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="40dp"
                 android:text="No Telp:"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNamaUser" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNamaUserEdit" />
 
             <TextView
                 android:id="@+id/email"
@@ -111,6 +100,26 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtRestaurant" />
+
+            <Button
+                android:id="@+id/btnEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:text="Edit Profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtSaldoWalletEdit" />
+
+            <Button
+                android:id="@+id/btnChangePasswordUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="32dp"
+                android:text="Change Password"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtSaldoWalletEdit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

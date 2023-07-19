@@ -49,4 +49,7 @@ interface KulinerDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addReview(vararg review: Review)
+
+    @Query("UPDATE accounts SET phone=:phone, location=:location WHERE username=:username")
+    fun updateProfile(phone: String, location: String, username: String)
 }
