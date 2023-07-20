@@ -43,3 +43,13 @@ interface ListKulinerLayoutInterface{
 interface FragmentAddReviewLayoutInterface{
     fun onButtonAddReview(v: View)
 }
+
+interface FragmentProfileLayoutInterface{
+    fun onButtonChangePassword(v: View)
+    fun onButtonEditProfile(v: View)
+    fun onImgLogoutClick(v:View)
+}
+
+interface FragmentChangePasswordLayoutInterface{
+    fun onButtonSave(v: View)
+}

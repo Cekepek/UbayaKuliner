@@ -84,33 +84,19 @@
         android:name="com.cekepek.ubayakuliner.view.ProfileFragment"
         android:label="ProfileFragment" >
         <action
-            android:id="@+id/action_profileFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment" />
-        <action
             android:id="@+id/action_profileFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.cekepek.ubayakuliner.view.ChangePasswordFragment"
-        android:label="ChangePasswordFragment" >
-        <argument
-            android:name="username"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_changePasswordFragment_to_itemAkun"
-            app:destination="@id/itemAkun" />
-    </fragment>
+        android:label="ChangePasswordFragment" />
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.cekepek.ubayakuliner.view.EditProfileFragment"
         android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" >
-        <argument
-            android:name="username"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_editProfileFragment_to_itemAkun"
-            app:destination="@id/itemAkun" />
-    </fragment>
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>

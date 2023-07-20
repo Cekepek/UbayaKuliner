@@ -7,57 +7,52 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.cekepek.ubayakuliner.R
+import com.cekepek.ubayakuliner.databinding.FragmentChangePasswordBinding
+import com.cekepek.ubayakuliner.databinding.FragmentProfileBinding
+import com.cekepek.ubayakuliner.model.Account
+import com.cekepek.ubayakuliner.util.Global
 import com.cekepek.ubayakuliner.viewmodel.AccountViewmodel
 import com.google.android.material.textfield.TextInputEditText
 
-class ChangePasswordFragment : Fragment() {
+class ChangePasswordFragment : Fragment(),FragmentChangePasswordLayoutInterface {
 
     private lateinit var viewModel: AccountViewmodel
+    private lateinit var dataBinding: FragmentChangePasswordBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change_password, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentChangePasswordBinding>(inflater,R.layout.fragment_change_password, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        dataBinding.user = Account(Global.username, "","","")
+        dataBinding.buttonListener = this
         viewModel= ViewModelProvider(this).get(AccountViewmodel::class.java)
 
-        var username=""
-
-        arguments?.let{
-            val usernameSend=EditProfileFragmentArgs.fromBundle(requireArguments()).username
-            username= usernameSend
-        }
-
-        viewModel.getAccount(username)
+        viewModel.getAccount(Global.username)
 
         observeViewModel()
-
-        val txtPasswordUpdate=view.findViewById<TextInputEditText>(R.id.txtPasswordUpdate)
-        val btnUpdatePassword=view.findViewById<Button>(R.id.btnUpdatePassword)
-
-        btnUpdatePassword.setOnClickListener {
-            viewModel.updatePass(txtPasswordUpdate.text.toString(),  username)
-
-            val action=ChangePasswordFragmentDirections.actionChangePasswordFragmentToItemAkun()
-            Navigation.findNavController(it).navigate(action)
-        }
     }
 
     fun observeViewModel(){
         viewModel.accountLD.observe(viewLifecycleOwner, Observer{
-            val txtNamaUser=view?.findViewById<TextView>(R.id.txtUsernameUpdate)
-
-            txtNamaUser?.setText(it.username)
+            dataBinding.user = it
         })
+    }
+
+    override fun onButtonSave(v: View) {
+        viewModel.updatePass(dataBinding.user!!.password, dataBinding.user!!.username)
+        Navigation.findNavController(v).popBackStack()
     }
 }
