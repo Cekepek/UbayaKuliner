@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/itemListKuliner"
         android:name="com.cekepek.ubayakuliner.view.ListKulinerFragment"
-        android:label="ListKulinerFragment" >
+        android:label="Kuliner">
         <action
             android:id="@+id/actionTransaksi"
             app:destination="@id/transaksiKulinerFragment" />
@@ -21,8 +21,8 @@
     <fragment
         android:id="@+id/transaksiKulinerFragment"
         android:name="com.cekepek.ubayakuliner.view.TransaksiKulinerFragment"
-        android:label="fragment_transaksi_kuliner"
-        tools:layout="@layout/fragment_transaksi_kuliner" >
+        android:label="Transaksi"
+        tools:layout="@layout/fragment_transaksi_kuliner">
         <argument
             android:name="idMakanan"
             app:argType="integer" />
@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/detailTransaksiFragment"
         android:name="com.cekepek.ubayakuliner.view.DetailTransaksiFragment"
-        android:label="DetailTransaksiFragment" >
+        android:label="Detail Transaksi">
         <argument android:name="idPembelian" />
         <action
             android:id="@+id/actionKembali"
@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/itemRiwayat"
         android:name="com.cekepek.ubayakuliner.view.RiwayatTransaksiFragment"
-        android:label="RiwayatTransaksiFragment" >
+        android:label="Riwayat Transaksi">
         <action
             android:id="@+id/actionDetailRiwayatTransaksi"
             app:destination="@id/detailTransaksiFragment" />
@@ -50,7 +50,7 @@
     <fragment
         android:id="@+id/detailListKulinerFragment"
         android:name="com.cekepek.ubayakuliner.view.DetailListKulinerFragment"
-        android:label="DetailListKulinerFragment" >
+        android:label="Detail Kuliner">
         <argument
             android:name="idMakanan"
             app:argType="integer" />
@@ -61,8 +61,8 @@
     <fragment
         android:id="@+id/reviewFragment"
         android:name="com.cekepek.ubayakuliner.view.ReviewFragment"
-        android:label="fragment_review"
-        tools:layout="@layout/fragment_review" >
+        android:label="Reviews"
+        tools:layout="@layout/fragment_review">
         <argument
             android:name="idMakanan"
             app:argType="integer" />
@@ -73,8 +73,8 @@
     <fragment
         android:id="@+id/addReviewFragment"
         android:name="com.cekepek.ubayakuliner.view.AddReviewFragment"
-        android:label="fragment_add_review"
-        tools:layout="@layout/fragment_add_review" >
+        android:label="Tambah Review"
+        tools:layout="@layout/fragment_add_review">
         <argument
             android:name="idMakanan"
             app:argType="integer" />
@@ -82,7 +82,7 @@
     <fragment
         android:id="@+id/itemAkun"
         android:name="com.cekepek.ubayakuliner.view.ProfileFragment"
-        android:label="ProfileFragment" >
+        android:label="Profile">
         <action
             android:id="@+id/action_profileFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
@@ -93,10 +93,10 @@
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.cekepek.ubayakuliner.view.ChangePasswordFragment"
-        android:label="ChangePasswordFragment" />
+        android:label="Change Password" />
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.cekepek.ubayakuliner.view.EditProfileFragment"
-        android:label="fragment_edit_profile"
+        android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
 </navigation>
