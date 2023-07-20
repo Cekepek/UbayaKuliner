@@ -57,10 +57,10 @@ class AccountViewmodel(application: Application): AndroidViewModel(application),
         }
     }
 
-    fun updateProfile(phone: String, location: String, username: String){
+    fun updateProfile(phone: String, location: String, username: String, usernameBaru:String){
         launch {
             val db = buildDb(getApplication())
-            db.KulinerDao().updateProfile(phone, location, username)
+            db.KulinerDao().updateProfile(phone, location, username, usernameBaru)
         }
     }
     fun getAccount(username: String){
